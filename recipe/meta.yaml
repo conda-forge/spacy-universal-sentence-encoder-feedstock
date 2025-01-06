@@ -6,20 +6,20 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/spacy_universal_sentence_encoder-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/spacy_universal_sentence_encoder-{{ version }}.tar.gz
   sha256: 822404c1d7c8b82ceb2385803efc11a8b3d2a08467c2083d6102a4555c82e1e2
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - tensorflow >=2.4.0,<3.0.0
     - spacy >=3.0.0,<4.0.0
     - tensorflow-hub
@@ -31,6 +31,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/MartinoMensio/spacy-universal-sentence-encoder
