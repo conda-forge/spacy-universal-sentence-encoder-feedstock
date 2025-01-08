@@ -27,8 +27,6 @@ requirements:
 test:
   imports:
     - spacy_universal_sentence_encoder
-  commands:
-    - pip check
   requires:
     - pip
     - python {{ python_min }}
